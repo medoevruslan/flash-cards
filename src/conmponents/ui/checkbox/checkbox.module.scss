@@ -1,0 +1,62 @@
+button {
+  all: unset;
+}
+.CheckboxRoot {
+  position: relative;
+  background-color: transparent;
+  border: 1px solid var(--color-light-900);
+  border-radius: 2px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    &::after {
+      z-index: -1;
+      position: absolute;
+      content:  '';
+      display: block;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      background-color: var(--color-dark-500);
+    }
+  }
+
+  &[data-disabled] {
+    svg {
+      color: var(--color-dark-300);
+    }
+    pointer-events: none;
+    &~ label {
+      color: var(--color-dark-300);
+      pointer-events: none;
+    }
+  }
+
+  &:is(&:focus, &:active) {
+    &::before {
+      z-index: -2;
+      position: absolute;
+      content:  '';
+      display: block;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      background-color: var(--color-dark-100);
+    }
+  }
+}
+
+.Label {
+  font-size: var(--font-size-s);
+  color: var(--color-light-100);
+  line-height: var(--line-height-m);
+}
+
+svg {
+  display: block;
+  color: var(--color-light-100);
+}

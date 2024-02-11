@@ -2,7 +2,7 @@ import React, { ComponentPropsWithoutRef, useRef, useState } from 'react'
 
 import s from './input.module.scss'
 
-type Props = {
+export type InputProps = {
   clearInput?: () => void
   disabled?: boolean
   error?: React.ReactNode
@@ -24,7 +24,7 @@ export function Input({
   placeholder,
   type,
   ...rest
-}: Props & Omit<ComponentPropsWithoutRef<'input'>, keyof Props>) {
+}: InputProps & Omit<ComponentPropsWithoutRef<'input'>, keyof InputProps>) {
   const [showPassword, setShowPassword] = useState(false)
   const [value, setValue] = useState('')
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
