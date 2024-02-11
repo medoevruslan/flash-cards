@@ -1,0 +1,47 @@
+.h1, .h2 {
+  line-height: var(--line-height-l);
+}
+
+.h3, .h4, .body1, .body2, .subtitle1, .subtitle2, .link1 {
+  line-height: var(--line-height-m);
+}
+
+.caption, .overline, .link2 {
+  line-height: var(--line-height-s);
+}
+
+.h1, .h2, .h3, .h4, .subtitle1, .subtitle2, .overline {
+  font-weight: var(--font-weight-bold);
+}
+
+.body1, .body2, .caption, .link1, .link2 {
+  font-weight: var(--font-weight-regular);
+}
+
+.link1, .link2 {
+  color: var(--color-info-500);
+}
+
+.h1 {
+  font-size: var(--font-size-xxl);
+}
+
+.h2 {
+  font-size: var(--font-size-xl);
+}
+
+.h3 {
+  font-size: var(--font-size-l);
+}
+
+.h4, .body1, .subtitle1 {
+  font-size: var(--font-size-m);
+}
+
+.body2, .subtitle2, .link1 {
+  font-size: var(--font-size-s);
+}
+
+.caption, .overline {
+  font-size: var(--font-size-xs);
+}

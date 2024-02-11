@@ -13,7 +13,13 @@ export type Props<T extends ElementType = 'button'> = {
 export const Button = <T extends ElementType = 'button'>(
   props: Props<T> & Omit<ComponentPropsWithoutRef<T>, keyof Props<T>>
 ) => {
-  const { as: Component = 'button', className, fullwidth, variant = 'primary', ...rest } = props
+  const {
+    as: Component = 'button',
+    className = '',
+    fullwidth,
+    variant = 'primary',
+    ...rest
+  } = props
 
   return (
     <Component

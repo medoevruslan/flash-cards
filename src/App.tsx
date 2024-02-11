@@ -1,4 +1,4 @@
-import { Button } from '@/conmponents/ui'
+import { Button } from '@/conmponents/ui/button'
 
 export function App() {
   return (
