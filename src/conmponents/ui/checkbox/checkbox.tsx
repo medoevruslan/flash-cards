@@ -1,13 +1,14 @@
-import { ComponentPropsWithoutRef, useId } from 'react'
+import { useId } from 'react'
 
 import * as Checkbox from '@radix-ui/react-checkbox'
 
 import s from './checkbox.module.scss'
 
 type CheckboxProps = {
+  disabled?: boolean
   label?: string
   onCheckedChange?: (checked: 'indeterminate' | boolean) => void
-} & Omit<ComponentPropsWithoutRef<'input'>, 'type'>
+}
 
 export const CheckboxInput = ({ disabled, label, onCheckedChange }: CheckboxProps) => {
   const id = useId()

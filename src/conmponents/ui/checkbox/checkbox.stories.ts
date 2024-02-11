@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { CheckboxInput } from './checkbox'
+import { CheckboxInput } from './'
 const meta = {
   component: CheckboxInput,
   tags: ['autodocs'],
