@@ -1,0 +1,54 @@
+button {
+  all: unset;
+}
+
+.content {
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500);
+  padding: 12px;
+  border-radius: 4px;
+
+  .headerItem {
+    &:focus-visible {
+      outline: none;
+      pointer-events: none;
+    }
+  }
+
+  .item {
+    cursor: default;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    & + & {
+      margin-top: 12px;
+    }
+
+    &:hover {
+      color: var(--color-accent-500);
+      transition: color .3s ease-in;
+    }
+
+    &:is(:focus-visible, :active), {
+      color: var(--color-accent-500);
+      transition: color .1s ease-in;
+      outline: none;
+    }
+  }
+
+  .separator {
+    height: 1px;
+    margin: 12px 0;
+    background-color: var(--color-dark-500);
+  }
+
+}
+
+span:has( > .contentArrow) {
+
+}
+
+.contentArrow {
+  fill: var(--color-dark-700);
+}

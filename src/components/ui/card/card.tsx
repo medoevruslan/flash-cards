@@ -11,9 +11,7 @@ export type CardProps = {
 export const Card = (props: CardProps) => {
   const { as: Component = 'div', children, className = '', ...rest } = props
 
-  const finalClassName = s.cardss + (className ? ' ' + className : '')
-
-  console.log(finalClassName)
+  const finalClassName = s.card + (className ? ' ' + className : '')
 
   return (
     <Component className={finalClassName} {...rest}>
