@@ -5,6 +5,9 @@ import { Meta, StoryObj } from '@storybook/react'
 import ProfileImage from '../../../assets/Ellipse 1.png'
 
 const meta = {
+  argTypes: {
+    onChange: { action: 'selected:' },
+  },
   component: Dropdown,
   parameters: {
     layout: 'centered',
