@@ -15,7 +15,7 @@ export type DropdownProps = {
   className?: string
   dropdownItems: DropdownItem[]
   headerItem?: React.ReactNode
-  onChange?: (event: Event) => void
+  onChange?: (value: string) => void
   rootTrigger?: React.ReactNode
 }
 
@@ -28,9 +28,9 @@ export const Dropdown = ({
 }: DropdownProps) => {
   const finalClassName = s.content + (className ? ' ' + className : '')
 
-  const handleSelectItem = (event: Event) => {
+  const handleSelectItem = (event: Event, value: string) => {
     event.preventDefault()
-    onChange && onChange(event)
+    onChange && onChange(value)
   }
 
   return (
@@ -50,7 +50,11 @@ export const Dropdown = ({
 
             return (
               <>
-                <DropdownMenu.Item className={s.item} key={i.text} onSelect={handleSelectItem}>
+                <DropdownMenu.Item
+                  className={s.item}
+                  key={i.text}
+                  onSelect={event => handleSelectItem(event, i.text)}
+                >
                   {i?.icon && <Icon height={20} name={i.icon} width={20} />}
                   {i.text}
                 </DropdownMenu.Item>

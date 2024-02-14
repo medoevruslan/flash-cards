@@ -1,0 +1,54 @@
+button {
+  all: unset;
+}
+
+.container {
+  min-width: 210px;
+  background-color: transparent;
+  padding: 6px 10px 6px 12px;
+  color: var(--color-light-100);
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid var(--color-dark-300);
+  border-radius: 2px;
+}
+.trigger {
+  &:focus-visible {
+    outline: 2px solid var(--color-info-700);
+  }
+  &:hover {
+    background-color: var(--color-dark-500);
+  }
+  &[data-state='open'] {
+    & .triggerIcon {
+      transform: rotate(180deg) translateY(2px);
+    }
+  }
+  &:disabled {
+    pointer-events: none;
+    color: var(--color-dark-300);
+    .triggerIcon {
+      color: var(--color-dark-300);
+    }
+  }
+}
+
+.optionWrapper {
+
+}
+
+.content {
+  margin-top: 37px;
+  padding: 0;
+}
+
+.option {
+  padding: 6px 10px 6px 12px;
+  &:hover {
+    outline: none;
+    background-color: var(--color-accent-900);
+  }
+  &:focus-visible {
+    outline: none;
+  }
+}
