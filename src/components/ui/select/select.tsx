@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Icon } from '@/components/ui/icon'
+import { Icon } from '@/components/ui/icon/icon'
 import { Typography } from '@/components/ui/typography'
 import * as SelectRadix from '@radix-ui/react-select'
 import { type SelectProps as RadixSelectProps, SelectItemProps } from '@radix-ui/react-select'
@@ -8,24 +8,32 @@ import clsx from 'clsx'
 
 import s from './select.module.scss'
 
-export type SelectProps = RadixSelectProps
-export const Select = ({ children, disabled, onValueChange }: SelectProps) => {
+export type SelectProps = {
+  className?: string
+  placeholder?: string
+} & RadixSelectProps
+export const Select = ({
+  children,
+  className,
+  defaultValue,
+  disabled,
+  onValueChange,
+  placeholder,
+}: SelectProps) => {
   return (
     <SelectRadix.Root disabled={disabled} onValueChange={onValueChange}>
-      <div className={s.rootContainer}>
-        <SelectRadix.Trigger className={clsx(s.container, s.trigger)}>
-          <SelectRadix.Value placeholder={'Please select'} />
-          <SelectRadix.Icon>
-            <Icon className={s.triggerIcon} height={10} name={'chevron-down'} width={10} />
-          </SelectRadix.Icon>
-        </SelectRadix.Trigger>
-        <SelectRadix.Portal>
-          <SelectRadix.Content align={'center'} className={clsx(s.container, s.content)}>
-            <SelectRadix.Viewport className={s.viewport}>{children}</SelectRadix.Viewport>
-            <SelectRadix.Arrow />
-          </SelectRadix.Content>
-        </SelectRadix.Portal>
-      </div>
+      <SelectRadix.Trigger className={clsx(s.container, s.trigger, className)}>
+        <SelectRadix.Value placeholder={placeholder || defaultValue || 'Select'} />
+        <SelectRadix.Icon>
+          <Icon className={s.triggerIcon} height={10} name={'chevron-down'} width={10} />
+        </SelectRadix.Icon>
+      </SelectRadix.Trigger>
+      <SelectRadix.Portal>
+        <SelectRadix.Content className={clsx(s.content)} position={'popper'} sideOffset={-6}>
+          <SelectRadix.Viewport className={s.viewport}>{children}</SelectRadix.Viewport>
+          <SelectRadix.Arrow />
+        </SelectRadix.Content>
+      </SelectRadix.Portal>
     </SelectRadix.Root>
   )
 }

@@ -20,6 +20,7 @@ const variantMapping = {
 type Props<T extends ElementType> = {
   children: React.ReactNode
   className?: string
+  style?: React.CSSProperties
   variant:
     | 'body1'
     | 'body2'
@@ -37,11 +38,11 @@ type Props<T extends ElementType> = {
 export const Typography = <T extends ElementType>(
   props: Props<T> & Omit<ComponentPropsWithoutRef<T>, keyof Props<T>>
 ) => {
-  const { children, className = '', variant, ...rest } = props
+  const { children, className = '', style, variant, ...rest } = props
   const Component = variantMapping[variant]
 
   return (
-    <Component className={`${s[variant]} ${className}`} {...rest}>
+    <Component className={`${s[variant]} ${className}`} style={style} {...rest}>
       {children}
     </Component>
   )

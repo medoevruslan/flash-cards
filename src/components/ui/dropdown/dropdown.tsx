@@ -4,7 +4,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 
 import s from './dropdown.module.scss'
 
-import { Icon } from '../icon'
+import { Icon } from '../icon/icon'
 
 type DropdownItem = {
   icon?: string

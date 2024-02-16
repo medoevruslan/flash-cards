@@ -1,0 +1,70 @@
+.root {
+  border-collapse: collapse;
+  color: var(--color-light-100);
+}
+
+.cell {
+  padding: 6px 24px;
+}
+
+.thCell {
+  text-align: left;
+}
+
+.head {
+  background-color: var(--color-dark-500);
+  border: 0!important;
+}
+
+.row {
+  background-color: transparent;
+}
+
+.tBody {
+  .row {
+    border-bottom: 1px solid var(--color-dark-300);
+  }
+}
+
+.iconRating {
+  padding-right: 10px;
+}
+
+.iconSort {
+  
+}
+
+.actionIcon {
+  cursor: pointer;
+  transition: color .2s ease-in;
+  &:hover {
+    color: var(--color-accent-500);
+  }
+}
+
+.profileInfo {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.mobile {
+  display: flex;
+  flex-direction: column;
+  border: 1px dashed var(--color-accent-500);
+  width: fit-content;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.mobileRow {
+  padding: 6px 24px;
+  border-bottom: 1px solid var(--color-dark-300);
+  margin-bottom: 20px;
+  align-self: flex-start;
+
+  &:last-of-type {
+    align-self: unset;
+    margin-bottom: unset;
+  }
+}
