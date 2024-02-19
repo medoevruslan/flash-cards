@@ -4,6 +4,8 @@ button {
 }
 
 .checkboxWrapper {
+  position: relative;
+  z-index: 1;
   align-items: center;
   display: flex;
   gap: 8px;

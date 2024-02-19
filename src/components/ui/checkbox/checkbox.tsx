@@ -46,7 +46,7 @@ export const CheckboxInput = ({
         </Checkbox.Indicator>
       </Checkbox.Root>
       {label && (
-        <label className={s.Label} htmlFor={id}>
+        <label className={s.label} htmlFor={id}>
           {label}
         </label>
       )}

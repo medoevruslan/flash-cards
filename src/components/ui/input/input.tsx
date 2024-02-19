@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, forwardRef, useState } from 'react'
+import React, { ComponentPropsWithoutRef, ElementRef, forwardRef, useState } from 'react'
 
 import { Typography } from '@/components/ui/typography'
 import clsx from 'clsx'
@@ -16,7 +16,7 @@ export type InputProps = {
   type?: 'password' | 'search'
 } & ComponentPropsWithoutRef<'input'>
 export const Input = forwardRef<
-  HTMLInputElement,
+  ElementRef<'input'>,
   InputProps & Omit<ComponentPropsWithoutRef<'input'>, keyof InputProps>
 >(
   (
