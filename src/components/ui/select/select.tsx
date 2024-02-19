@@ -11,6 +11,7 @@ import s from './select.module.scss'
 export type SelectProps = {
   className?: string
   placeholder?: string
+  style?: React.CSSProperties
 } & RadixSelectProps
 export const Select = ({
   children,
@@ -19,17 +20,23 @@ export const Select = ({
   disabled,
   onValueChange,
   placeholder,
+  style,
 }: SelectProps) => {
   return (
     <SelectRadix.Root disabled={disabled} onValueChange={onValueChange}>
-      <SelectRadix.Trigger className={clsx(s.container, s.trigger, className)}>
+      <SelectRadix.Trigger className={clsx(s.container, s.trigger, className)} style={style}>
         <SelectRadix.Value placeholder={placeholder || defaultValue || 'Select'} />
         <SelectRadix.Icon>
           <Icon className={s.triggerIcon} height={10} name={'chevron-down'} width={10} />
         </SelectRadix.Icon>
       </SelectRadix.Trigger>
       <SelectRadix.Portal>
-        <SelectRadix.Content className={clsx(s.content)} position={'popper'} sideOffset={-6}>
+        <SelectRadix.Content
+          className={clsx(s.content)}
+          position={'popper'}
+          sideOffset={-6}
+          style={style}
+        >
           <SelectRadix.Viewport className={s.viewport}>{children}</SelectRadix.Viewport>
           <SelectRadix.Arrow />
         </SelectRadix.Content>
@@ -48,13 +55,11 @@ export const SelectOption = React.forwardRef<HTMLDivElement, OptionProps>(
     forwardedRef
   ) => {
     return (
-      <div className={s.optionWrapper}>
-        <SelectRadix.Item className={clsx(s.option, className)} {...rest} ref={forwardedRef}>
-          <SelectRadix.ItemText>
-            <Typography variant={'body1'}>{children}</Typography>
-          </SelectRadix.ItemText>
-        </SelectRadix.Item>
-      </div>
+      <SelectRadix.Item className={clsx(s.option, className)} {...rest} ref={forwardedRef}>
+        <SelectRadix.ItemText>
+          <Typography variant={'body1'}>{children}</Typography>
+        </SelectRadix.ItemText>
+      </SelectRadix.Item>
     )
   }
 )

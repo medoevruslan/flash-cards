@@ -1,4 +1,4 @@
-import { ProfileHeader } from '@/components/profile'
+import { Profile } from '@/components/profile'
 import { Dropdown } from '@/components/ui/dropdown'
 import { Meta, StoryObj } from '@storybook/react'
 
@@ -42,9 +42,7 @@ export const DropdownWithProfile: Story = {
       { icon: 'edit', text: 'My Profile' },
       { icon: 'delete', text: 'Sign Out' },
     ],
-    headerItem: (
-      <ProfileHeader email={'j&johnson@gmail.com'} imageSrc={ProfileImage} name={'Ivan'} />
-    ),
+    headerItem: <Profile email={'j&johnson@gmail.com'} imageSrc={ProfileImage} name={'Ivan'} />,
     rootTrigger: <img alt={'open dropdown'} src={ProfileImage} />,
   },
 }

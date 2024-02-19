@@ -2,23 +2,34 @@ import { useId } from 'react'
 
 import { Icon } from '@/components/ui/icon/icon'
 import * as Checkbox from '@radix-ui/react-checkbox'
+import { type CheckboxProps } from '@radix-ui/react-checkbox'
+import clsx from 'clsx'
 
 import s from './checkbox.module.scss'
 
-type CheckboxProps = {
+export type CheckboxInputProps = {
+  checked: boolean | string
+  className?: string
+  defaultValue?: boolean
   disabled?: boolean
   label?: string
-  onCheckedChange?: (checked: 'indeterminate' | boolean) => void
-}
+} & Omit<CheckboxProps, 'checked' | 'defaultValue'>
 
-export const CheckboxInput = ({ disabled, label, onCheckedChange }: CheckboxProps) => {
+export const CheckboxInput = ({
+  className,
+  defaultValue,
+  disabled,
+  label,
+  onCheckedChange,
+  style,
+}: CheckboxInputProps) => {
   const id = useId()
 
   return (
-    <div style={{ alignItems: 'center', display: 'flex', gap: '8px' }}>
+    <div className={clsx(s.checkboxWrapper, className)} style={style}>
       <Checkbox.Root
-        className={s.CheckboxRoot}
-        defaultChecked
+        className={s.checkboxRoot}
+        defaultChecked={defaultValue}
         disabled={disabled}
         id={id}
         onCheckedChange={onCheckedChange}

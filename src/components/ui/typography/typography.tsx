@@ -1,5 +1,7 @@
 import React, { ComponentPropsWithoutRef, ElementType } from 'react'
 
+import clsx from 'clsx'
+
 import s from './typography.module.scss'
 
 const variantMapping = {
@@ -42,7 +44,7 @@ export const Typography = <T extends ElementType>(
   const Component = variantMapping[variant]
 
   return (
-    <Component className={`${s[variant]} ${className}`} style={style} {...rest}>
+    <Component className={clsx(s[variant], className)} style={style} {...rest}>
       {children}
     </Component>
   )

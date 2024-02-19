@@ -1,0 +1,46 @@
+button {
+  all: unset;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-dark-500);
+  padding: 18px 24px;
+}
+
+.close {
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0 0 0 /.9);
+}
+
+.container {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+
+  .content {
+    min-width: 367px;
+    max-width: 764px;
+    width: 100%;
+    background-color: var(--color-dark-700);
+    border: 1px solid var(--color-dark-500);
+  }
+
+  article {
+    padding: 18px 24px;
+  }
+
+  .select {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+

@@ -1,19 +1,23 @@
 .inputContainer {
   position: relative;
-  width: fit-content;
-  margin-top: 10px;
+  width: 284px;
+  max-width: 100%;
+}
+
+.iconRelate {
+  position: relative;
 }
 
 .label {
   font-size: var(--font-size-s);
   color: var(--color-dark-100);
   display: block;
-  position: absolute;
-  top: -25px;
+  position: relative;
+  top: 0;
 }
 
 .input {
-  max-width: 284px;
+  width: 100%;
   padding: 6px 12px;
   border-radius: 2px;
   border: 1px solid var(--color-dark-300);
@@ -30,7 +34,7 @@
   }
   &:active {
     border-color: var(--color-info-700);
-    border-width: 2px;
+    border-width: 1px;
   }
   &:disabled {
     color: var(--color-dark-300);

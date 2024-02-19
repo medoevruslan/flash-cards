@@ -1,7 +1,15 @@
 button {
   all: unset;
+  box-sizing: border-box;
 }
-.CheckboxRoot {
+
+.checkboxWrapper {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.checkboxRoot {
   position: relative;
   background-color: transparent;
   border: 1px solid var(--color-light-900);
@@ -50,7 +58,7 @@ button {
   }
 }
 
-.Label {
+.label {
   font-size: var(--font-size-s);
   color: var(--color-light-100);
   line-height: var(--line-height-m);

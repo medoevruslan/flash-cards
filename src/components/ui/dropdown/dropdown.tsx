@@ -55,8 +55,10 @@ export const Dropdown = ({
                   key={i.text}
                   onSelect={event => handleSelectItem(event, i.text)}
                 >
-                  {i?.icon && <Icon height={20} name={i.icon} width={20} />}
-                  {i.text}
+                  <a href={'javascript:void;'}>
+                    {i?.icon && <Icon height={20} name={i.icon} width={20} />}
+                    {i.text}
+                  </a>
                 </DropdownMenu.Item>
                 {idx < lastElem && <DropdownMenu.Separator className={s.separator} />}
               </>
