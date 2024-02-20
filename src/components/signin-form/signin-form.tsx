@@ -9,21 +9,21 @@ import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
 
-import s from './login-form.module.scss'
+import s from './signin-form.module.scss'
 
-const LoginFormSchema = z.object({
+const SigninFormSchema = z.object({
   email: z.string().email(),
   password: z.string().min(3),
   rememberMe: z.boolean().default(false),
 })
 
 export type Props = {
-  onSubmit: () => void
+  onSubmit: (data: FormValues) => void
 }
 
-export type FormValues = z.infer<typeof LoginFormSchema>
+export type FormValues = z.infer<typeof SigninFormSchema>
 
-export const LoginForm = () => {
+export const SigninForm = ({ onSubmit }: Props) => {
   const {
     control,
     formState: { errors },
@@ -35,12 +35,8 @@ export const LoginForm = () => {
       password: '',
       rememberMe: false,
     },
-    resolver: zodResolver(LoginFormSchema),
+    resolver: zodResolver(SigninFormSchema),
   })
-
-  const onSubmit = (data: FormValues) => {
-    console.log(data)
-  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
