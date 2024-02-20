@@ -43,10 +43,10 @@ export const SignupForm = ({ onSubmit }: Props) => {
   })
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
       <DevTool control={control} />
       <Card className={s.card}>
-        <header>
+        <header className={s.header}>
           <Typography variant={'h1'}>Sign Up</Typography>
         </header>
         <Input
@@ -72,7 +72,7 @@ export const SignupForm = ({ onSubmit }: Props) => {
         <Button className={s.signUp} fullwidth variant={'primary'}>
           <Typography variant={'subtitle2'}>Sign In</Typography>
         </Button>
-        <footer>
+        <footer className={s.footer}>
           <Typography variant={'body2'}>
             <a className={s.account} href={'#'}>
               Don&apos;t have an account?

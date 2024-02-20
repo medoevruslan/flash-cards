@@ -7,15 +7,15 @@ a {
   }
 }
 
-form {
+.form {
   width: 420px;
   max-width: 100%;
 
-  header, footer {
+  .header, .footer {
     text-align: center;
   }
 
-  header {
+  .header {
     margin-bottom: 28px;
   }
 
