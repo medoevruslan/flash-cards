@@ -1,4 +1,5 @@
 import { Typography } from '@/components/ui/typography'
+import clsx from 'clsx'
 
 import s from './profile.module.scss'
 
@@ -11,7 +12,7 @@ type Props = {
 
 export const Profile = ({ className = '', email, imageSrc, name }: Props) => {
   return (
-    <div className={s.profileContainer + (className ? ' ' + className : '')}>
+    <div className={clsx(s.profileContainer, className)}>
       <img alt={email || name} src={imageSrc} />
       <div className={s.textInfo}>
         <Typography variant={'subtitle2'}>{name}</Typography>

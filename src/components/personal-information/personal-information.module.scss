@@ -1,0 +1,65 @@
+.infoWraper {
+  padding: 32px 10px 40px;
+  width: 420px;
+  max-width: 100%;
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      svg:hover {
+        color: var(--color-accent-100);
+        cursor: pointer;
+      }
+    }
+
+    .email {
+      margin-bottom: 13px;
+      color: var(--color-dark-100);
+    }
+
+    .logOut {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .imageWrapper {
+      position: relative;
+      margin: 27px 0 6px;
+
+      label {
+        cursor: pointer;
+      }
+
+      input[type='file'] {
+        display: none;
+      }
+      .iconWrapper {
+        position: absolute;
+        display: block;
+        bottom: 0;
+        right: 0;
+        padding: 4px;
+        border-radius: 4px;
+        background-color: var(--color-dark-300);
+
+        svg {
+          display: block;
+
+          &:hover {
+            color: var(--color-accent-100);
+          }
+        }
+
+      }
+    }
+  }
+}
+

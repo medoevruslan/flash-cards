@@ -43,6 +43,14 @@ export const DropdownWithProfile: Story = {
       { icon: 'delete', text: 'Sign Out' },
     ],
     headerItem: <Profile email={'j&johnson@gmail.com'} imageSrc={ProfileImage} name={'Ivan'} />,
-    rootTrigger: <img alt={'open dropdown'} src={ProfileImage} />,
+    rootTrigger: (
+      <img
+        alt={'open dropdown'}
+        aria-label={'open dropdown'}
+        role={'button'}
+        src={ProfileImage}
+        width={'36px'}
+      />
+    ),
   },
 }

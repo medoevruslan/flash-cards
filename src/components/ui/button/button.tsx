@@ -17,6 +17,7 @@ export const Button = <T extends ElementType = 'button'>(
 ) => {
   const {
     as: Component = 'button',
+    children,
     className = '',
     fullwidth,
     variant = 'primary',
@@ -25,9 +26,10 @@ export const Button = <T extends ElementType = 'button'>(
 
   return (
     <Component
-      // className={`${s.button} ${s[variant]} ${fullwidth ? s.fullWidth : ''} ${className}`}
       className={clsx(s.button, s[variant], fullwidth && s.fullWidth, className)}
       {...rest}
-    ></Component>
+    >
+      {children}
+    </Component>
   )
 }
