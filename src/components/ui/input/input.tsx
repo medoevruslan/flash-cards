@@ -61,7 +61,7 @@ export const Input = forwardRef<
     )
 
     const inputType = type === 'password' && !showPassword ? 'password' : 'text'
-    const showClearInputBtn = !!value && clearInput
+    const showClearInputBtn = !!value && clearInput && type === 'search'
 
     return (
       <>
@@ -72,7 +72,7 @@ export const Input = forwardRef<
             </label>
           )}
           <div className={s.iconRelate}>
-            {type === 'search' && showClearInputBtn && (
+            {showClearInputBtn && (
               <span className={`${s.clearSearch}`} onClick={handleClearInput} />
             )}
             {type === 'search' && <span className={`${s.searchIcon}`} onClick={onEnter} />}

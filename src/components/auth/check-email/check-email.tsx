@@ -3,7 +3,7 @@ import { Card } from '@/components/ui/card'
 import { Icon } from '@/components/ui/icon/icon'
 import { Typography } from '@/components/ui/typography'
 
-import s from '@/components/check-email/check-email.module.scss'
+import s from '@/components/auth/check-email/check-email.module.scss'
 
 export const CheckEmail = () => {
   return (
