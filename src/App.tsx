@@ -1,16 +1,14 @@
-import { Button } from '@/components/ui/button'
+import { Provider } from 'react-redux'
+
+import { Header } from '@/components/layout/header'
+import { Router } from '@/router'
+import { store } from '@/services/store'
 
 export function App() {
   return (
-    <>
-      <div>
-        <Button variant={'primary'}>Hello</Button>
-      </div>
-      <div>
-        <Button as={'a'} href={'/'} variant={'primary'}>
-          Hello
-        </Button>
-      </div>
-    </>
+    <Provider store={store}>
+      <Header />
+      <Router />
+    </Provider>
   )
 }

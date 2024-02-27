@@ -12,4 +12,12 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const SigninPage: Story = {}
+export const SigninPage: Story = {
+  render: () => {
+    return (
+      <>
+        <Signin />
+      </>
+    )
+  },
+}

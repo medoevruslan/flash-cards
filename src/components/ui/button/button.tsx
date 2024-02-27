@@ -1,5 +1,6 @@
 import React, { ComponentPropsWithoutRef, ElementType } from 'react'
 
+import { Typography } from '@/components/ui/typography'
 import clsx from 'clsx'
 
 import s from './button.module.scss'
@@ -29,7 +30,7 @@ export const Button = <T extends ElementType = 'button'>(
       className={clsx(s.button, s[variant], fullwidth && s.fullWidth, className)}
       {...rest}
     >
-      {children}
+      <Typography variant={'subtitle2'}>{children}</Typography>
     </Component>
   )
 }

@@ -1,0 +1,12 @@
+.deckName {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .deckCover {
+    width: 118px;
+    height: 48px;
+    max-width: 100%;
+    object-fit: cover;
+  }
+}
