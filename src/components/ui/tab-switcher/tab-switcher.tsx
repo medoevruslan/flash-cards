@@ -3,12 +3,13 @@ import * as Tabs from '@radix-ui/react-tabs'
 import s from './tab-switcher.module.scss'
 
 type TabSwitcherProps = {
-  tabs: { content: string; disabled?: boolean; name: string }[]
+  onChange?: (value: string) => void
+  tabs: { content?: string; disabled?: boolean; name: string }[]
 }
 
-export const TabSwitcher = ({ tabs = [] }: TabSwitcherProps) => {
+export const TabSwitcher = ({ onChange, tabs = [] }: TabSwitcherProps) => {
   return (
-    <Tabs.Root defaultValue={tabs[0].name + 0}>
+    <Tabs.Root defaultValue={tabs[0].name + 0} onValueChange={onChange}>
       <Tabs.List className={s.tabsContainer}>
         {tabs.map((t, idx) => (
           <Tabs.Trigger
@@ -23,7 +24,7 @@ export const TabSwitcher = ({ tabs = [] }: TabSwitcherProps) => {
       </Tabs.List>
       {tabs.map((t, idx) => (
         <Tabs.Content key={t.name + idx} value={t.name + idx}>
-          Content for: {t.name + idx}
+          {t?.content}
         </Tabs.Content>
       ))}
     </Tabs.Root>

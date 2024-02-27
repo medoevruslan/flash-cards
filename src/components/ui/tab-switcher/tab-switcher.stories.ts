@@ -2,6 +2,9 @@ import { TabSwitcher } from '@/components/ui/tab-switcher/tab-switcher'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
+  argTypes: {
+    onChange: { action: 'tab changed' },
+  },
   component: TabSwitcher,
   tags: ['autodocs'],
   title: 'Component/Tab Switcher',
