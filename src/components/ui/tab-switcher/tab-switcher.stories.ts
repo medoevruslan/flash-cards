@@ -16,14 +16,16 @@ type Story = StoryObj<typeof meta>
 
 export const DeafaultTabSwitcher: Story = {
   args: {
-    tabs: new Array(4).fill({ content: '', name: 'Switch' }),
+    tabs: Array.from({ length: 4 }, (_, idx) => ({ content: '', name: 'Switch' + idx })),
   },
 }
 
 export const DeafaultTabDisabled: Story = {
   args: {
-    tabs: new Array(4)
-      .fill({ content: '', name: 'Switch' })
-      .map((t, idx) => (idx === 3 ? { ...t, disabled: true } : t)),
+    tabs: Array.from({ length: 4 }, (_, idx) => ({
+      content: '',
+      disabled: idx === 3,
+      name: 'Switch' + idx,
+    })),
   },
 }

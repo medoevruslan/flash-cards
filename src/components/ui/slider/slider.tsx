@@ -17,10 +17,10 @@ export const Slider = ({ onChange, values = [0, 50] }: SliderProps) => {
       <div className={s.valueBox}>{values[0]}</div>
       <SliderRadix.Root
         className={s.SliderRoot}
-        defaultValue={values}
         max={100}
         onValueChange={handleChangeValue}
         step={1}
+        value={values}
       >
         <SliderRadix.Track className={s.SliderTrack}>
           <SliderRadix.Range className={s.SliderRange} />

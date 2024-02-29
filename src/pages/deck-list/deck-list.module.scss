@@ -1,5 +1,33 @@
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.wrapper {
+  margin-top: 36px;
+
+  .table {
+    margin-bottom: 24px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tableNav {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    gap: 35px;
+    margin: 8px 0 36px;
+
+    .tabs {
+     & > p {
+        color: var(--color-light-100);
+      }
+    }
+
+    button {
+      margin-left:auto ;
+    }
+  }
 }
+
+

@@ -57,7 +57,7 @@ export const PaginationWithPerPageSelect: Story = {
     const [current, setCurrent] = useState(1)
     const [pageSize, setPageSize] = useState(postsPerPage)
 
-    const prePageOptions = [10, 20, 30, 50, 100]
+    const prePageOptions = ['10', '20', '30', '50', '100']
 
     return (
       <Pagination

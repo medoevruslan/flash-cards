@@ -6,6 +6,8 @@
 
 .iconRelate {
   position: relative;
+  width: 100%;
+  display: flex;
 }
 
 .label {
@@ -37,8 +39,8 @@
     border-width: 1px;
   }
   &:disabled {
-    color: var(--color-dark-300);
-    border-color: var(--color-dark-300);
+    color: var(--color-dark-500);
+    border-color: var(--color-dark-500);
   }
 }
 
@@ -70,13 +72,17 @@
   height: 15px;
   transform: translateY(-50%);
   background-repeat: no-repeat;
-  background-color: var(--color-light-100);
+  background-color: var(--color-dark-300);
   mask-image: url("../../../assets/search.svg");
   -webkit-mask-image: url("../../../assets/search.svg");
   cursor: pointer;
 
+  &:has(~ input:focus ) {
+    background-color: var(--color-light-100);
+  }
+
   &:has(~ input:disabled ) {
-    background-color: var(--color-dark-300);
+    background-color: var(--color-dark-500);
   }
 }
 

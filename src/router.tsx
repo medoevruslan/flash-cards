@@ -1,10 +1,11 @@
 import { Navigate, Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import { DeckList } from '@/pages/deck-list/deck-list'
+import { Signin } from '@/pages/signin'
 
 const publicRoutes = [
   {
-    element: <p> Login page </p>,
+    element: <Signin />,
     path: '/login',
   },
 ]

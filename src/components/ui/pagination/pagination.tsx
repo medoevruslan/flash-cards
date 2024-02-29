@@ -9,7 +9,7 @@ import clsx from 'clsx'
 import s from './pagination.module.scss'
 
 export type PaginationProps = {
-  currentPage: number
+  currentPage?: number
   onPageChange: (page: number) => void
   pageSize: number
   siblingCount?: number
@@ -72,22 +72,18 @@ export const Pagination = ({
   )
 }
 
-export type PostsPerPageProps = {
-  onChange: (value: string) => void
-  options: number[]
+export type PostsPerPageProps<T extends string> = {
+  onChange: (value: T) => void
+  options: Readonly<T[]>
 }
 
-export const PostsPerPage = ({ onChange, options }: PostsPerPageProps) => {
+export const PostsPerPage = <T extends string>({ onChange, options }: PostsPerPageProps<T>) => {
   return (
     <div className={s.containerPerPage}>
       <Typography variant={'body2'}>Показать</Typography>
-      <Select
-        className={s.selectPerPage}
-        onValueChange={onChange}
-        placeholder={options[0].toString()}
-      >
+      <Select className={s.selectPerPage} onValueChange={onChange} placeholder={options[0]}>
         {options.map(opt => (
-          <SelectOption key={opt} value={opt.toString()}>
+          <SelectOption key={opt} value={opt}>
             {opt}
           </SelectOption>
         ))}
