@@ -33,3 +33,13 @@ export type GetDecksArgs = {
   name?: string
   userId?: string
 }
+
+export type User = {
+  avatar: string
+  created: string
+  email: string
+  id: string
+  isEmailVerified: boolean
+  name: string
+  updated: string
+}

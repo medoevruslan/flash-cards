@@ -1,0 +1,2 @@
+- [x] login logic
+- [ ] user dropdown in header with logout button

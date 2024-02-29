@@ -68,7 +68,7 @@ export const SigninForm = ({ onSubmit }: Props) => {
           <a href={'#'}>Forgot password?</a>
         </Typography>
         <Button className={s.signIn} fullwidth variant={'primary'}>
-          <Typography variant={'subtitle2'}>Sign In</Typography>
+          Sign In
         </Button>
         <footer className={s.footer}>
           <Typography variant={'body2'}>
