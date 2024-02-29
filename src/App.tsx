@@ -1,14 +1,15 @@
 import { Provider } from 'react-redux'
 
-import { Header } from '@/components/layout/header'
+import { Layout } from '@/components/layout/layout'
 import { Router } from '@/router'
 import { store } from '@/services/store'
 
 export function App() {
   return (
     <Provider store={store}>
-      <Header />
-      <Router />
+      <Layout>
+        <Router />
+      </Layout>
     </Provider>
   )
 }

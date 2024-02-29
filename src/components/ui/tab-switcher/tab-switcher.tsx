@@ -1,32 +1,56 @@
+import { Typography } from '@/components/ui/typography'
 import * as Tabs from '@radix-ui/react-tabs'
+import clsx from 'clsx'
 
 import s from './tab-switcher.module.scss'
 
-type TabSwitcherProps = {
-  onChange?: (value: string) => void
-  tabs: { content?: string; disabled?: boolean; name: string }[]
+type Tab = {
+  content?: string
+  disabled?: boolean
+  name: string
 }
 
-export const TabSwitcher = ({ onChange, tabs = [] }: TabSwitcherProps) => {
+export type TabSwitcherProps = {
+  className?: string
+  defaultValue?: string
+  label?: string
+  onChange?: (value: Tab['name']) => void
+  tabs: Tab[]
+}
+
+export const TabSwitcher = ({
+  className,
+  defaultValue,
+  label,
+  onChange,
+  tabs = [],
+}: TabSwitcherProps) => {
   return (
-    <Tabs.Root defaultValue={tabs[0].name + 0} onValueChange={onChange}>
-      <Tabs.List className={s.tabsContainer}>
+    <div className={clsx(className)}>
+      {label && (
+        <Typography className={s.label} variant={'body2'}>
+          {label}
+        </Typography>
+      )}
+      <Tabs.Root
+        className={s.root}
+        defaultValue={defaultValue ?? tabs[0]?.name}
+        onValueChange={onChange}
+        value={defaultValue}
+      >
+        <Tabs.List className={s.tabsContainer}>
+          {tabs.map(t => (
+            <Tabs.Trigger className={s.tab} disabled={t?.disabled} key={t.name} value={t.name}>
+              {t.name}
+            </Tabs.Trigger>
+          ))}
+        </Tabs.List>
         {tabs.map((t, idx) => (
-          <Tabs.Trigger
-            className={s.tab}
-            disabled={t?.disabled}
-            key={t.name + idx}
-            value={t.name + idx}
-          >
-            {t.name + idx}
-          </Tabs.Trigger>
+          <Tabs.Content key={t.name + idx} value={t.name + idx}>
+            {t?.content}
+          </Tabs.Content>
         ))}
-      </Tabs.List>
-      {tabs.map((t, idx) => (
-        <Tabs.Content key={t.name + idx} value={t.name + idx}>
-          {t?.content}
-        </Tabs.Content>
-      ))}
-    </Tabs.Root>
+      </Tabs.Root>
+    </div>
   )
 }
