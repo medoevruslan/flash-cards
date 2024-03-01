@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Navigate, Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 
@@ -6,13 +7,38 @@ import { Signin } from '@/pages/signin'
 import { appActions } from '@/services/app/app.slice'
 import { useMeQuery } from '@/services/auth/signin-api'
 
-const publicRoutes = [
-  {
-    element: <Signin />,
-    path: '/login',
-  },
-]
+const PrivateRoutes = () => {
+  const { data, isError, isLoading } = useMeQuery()
+  const isAuthenticated = !isError && !isLoading
+  const dispatch = useDispatch()
 
+  useEffect(() => {
+    const user = !isError && data ? data : null
+
+    dispatch(appActions.setUser(user))
+  }, [data, isLoading, isError])
+
+  if (isLoading) {
+    return 'loading'
+  }
+
+  return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
+}
+
+const RedirectToMainWhenUserSignedIn = () => {
+  const { isError, isLoading } = useMeQuery()
+
+  const shouldNavigateToMain = !isError && !isLoading
+
+  if (isLoading) {
+    return 'loading'
+  }
+
+  return shouldNavigateToMain ? <Navigate to={'/'} /> : <Outlet />
+}
+
+//@ts-ignore
+const publicRoutes = []
 const privateRoutes = [
   {
     element: <DeckList />,
@@ -20,18 +46,14 @@ const privateRoutes = [
   },
 ]
 
-const PrivateRoutes = () => {
-  const { data, isError, isLoading } = useMeQuery()
-  const isAuthenticated = !isError && !isLoading
-  const dispatch = useDispatch()
-
-  if (isLoading) {
-    return 'loading'
-  }
-
-  dispatch(appActions.setUser(data ?? null))
-
-  return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
+const signInCheck = {
+  children: [
+    {
+      element: <Signin />,
+      path: '/login',
+    },
+  ],
+  element: <RedirectToMainWhenUserSignedIn />,
 }
 
 const router = createBrowserRouter([
@@ -39,6 +61,7 @@ const router = createBrowserRouter([
     children: privateRoutes,
     element: <PrivateRoutes />,
   },
+  signInCheck,
   ...publicRoutes,
 ])
 

@@ -1,72 +1,54 @@
 import React from 'react'
 
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import { Item as RadixDropDownItem } from '@radix-ui/react-dropdown-menu'
+import clsx from 'clsx'
 
 import s from './dropdown.module.scss'
 
 import { Icon } from '../icon/icon'
 
-type DropdownItem = {
-  icon?: string
-  text: string
-}
-
 export type DropdownProps = {
+  children?: React.ReactNode
   className?: string
-  dropdownItems: DropdownItem[]
   headerItem?: React.ReactNode
-  onChange?: (value: string) => void
   rootTrigger?: React.ReactNode
 }
 
 export const Dropdown = ({
-  className = '',
-  dropdownItems,
+  children,
+  className,
   headerItem,
-  onChange,
   rootTrigger = <Icon height={'24'} name={'more'} viewBox={'0 0 24 24'} width={'24'} />,
 }: DropdownProps) => {
-  const finalClassName = s.content + (className ? ' ' + className : '')
-
-  const handleSelectItem = (event: Event, value: string) => {
-    event.preventDefault()
-    onChange && onChange(value)
-  }
-
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger className={s.rootTrigger}>{rootTrigger}</DropdownMenu.Trigger>
       <DropdownMenu.Separator />
       <DropdownMenu.Portal>
-        <DropdownMenu.Content align={'end'} className={finalClassName}>
+        <DropdownMenu.Content align={'end'} className={clsx(s.content, className)}>
           {headerItem && (
             <>
               <DropdownMenu.Item className={s.headerItem}>{headerItem}</DropdownMenu.Item>
               <DropdownMenu.Separator className={s.separator} />
             </>
           )}
-          {dropdownItems.map((i, idx) => {
-            const lastElem = dropdownItems.length - 1
-
-            return (
-              <>
-                <DropdownMenu.Item
-                  className={s.item}
-                  key={i.text}
-                  onSelect={event => handleSelectItem(event, i.text)}
-                >
-                  <a href={'javascript:void;'}>
-                    {i?.icon && <Icon height={20} name={i.icon} width={20} />}
-                    {i.text}
-                  </a>
-                </DropdownMenu.Item>
-                {idx < lastElem && <DropdownMenu.Separator className={s.separator} />}
-              </>
-            )
-          })}
+          {children}
           <DropdownMenu.Arrow className={s.contentArrow} />
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
   )
 }
+
+type DropdownItemProps = {
+  children?: React.ReactNode
+} & React.ComponentProps<typeof RadixDropDownItem>
+
+export const DropdownItem = ({ children, ...props }: DropdownItemProps) => (
+  <DropdownMenu.Item {...props} className={clsx(s.item, props?.className)}>
+    {children}
+  </DropdownMenu.Item>
+)
+
+export const DropdownItemSeparator = () => <div className={s.separator} />

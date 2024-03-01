@@ -5,6 +5,8 @@ import { Router } from '@/router'
 import { store } from '@/services/store'
 
 export function App() {
+  console.log('main page')
+
   return (
     <Provider store={store}>
       <Layout>

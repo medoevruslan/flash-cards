@@ -17,16 +17,15 @@ button, a {
   }
 
   .item {
-    cursor: default;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 
     a {
       display: flex;
       align-items: center;
       gap: 5px;
-    }
-
-    & + & {
-      margin-top: 12px;
     }
 
     &:hover {
@@ -39,6 +38,10 @@ button, a {
       transition: color .1s ease-in;
       outline: none;
     }
+  }
+
+  .item + .item {
+    margin-top: 12px;
   }
 
   .separator {
