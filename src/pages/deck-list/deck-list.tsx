@@ -7,7 +7,7 @@ import { TableNav } from '@/components/table-deck/table-nav/table-nav'
 import { Button } from '@/components/ui/button'
 import { Pagination, PostsPerPage } from '@/components/ui/pagination'
 import { Typography } from '@/components/ui/typography'
-import { useGetDecksQuery } from '@/services/base-api/base-api'
+import { useGetDecksQuery } from '@/services/decks/decks.service'
 import { useDebounce } from 'use-debounce'
 
 import s from './deck-list.module.scss'

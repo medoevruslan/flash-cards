@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { SigninForm } from '@/components/auth'
 import { FormValues } from '@/components/auth/signin-form'
-import { useLoginMutation } from '@/services/auth/signin-api'
+import { useLoginMutation } from '@/services/auth/auth.service'
 
 import s from './signin.module.scss'
 

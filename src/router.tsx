@@ -5,7 +5,7 @@ import { Navigate, Outlet, RouterProvider, createBrowserRouter } from 'react-rou
 import { DeckList } from '@/pages/deck-list/deck-list'
 import { Signin } from '@/pages/signin'
 import { appActions } from '@/services/app/app.slice'
-import { useMeQuery } from '@/services/auth/signin-api'
+import { useMeQuery } from '@/services/auth/auth.service'
 
 const PrivateRoutes = () => {
   const { data, isError, isLoading } = useMeQuery()
@@ -62,6 +62,7 @@ const router = createBrowserRouter([
     element: <PrivateRoutes />,
   },
   signInCheck,
+  //@ts-ignore
   ...publicRoutes,
 ])
 
