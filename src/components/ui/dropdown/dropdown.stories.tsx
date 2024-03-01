@@ -1,13 +1,13 @@
 import { Profile } from '@/components/profile'
-import { Dropdown } from '@/components/ui/dropdown'
+import { Dropdown, DropdownItem } from '@/components/ui/dropdown'
+import { Icon } from '@/components/ui/icon/icon'
 import { Meta, StoryObj } from '@storybook/react'
+
+import s from '@/components/ui/dropdown/dropdown.module.scss'
 
 import ProfileImage from '../../../assets/Ellipse 1.png'
 
 const meta = {
-  argTypes: {
-    onChange: { action: 'selected:' },
-  },
   component: Dropdown,
   parameters: {
     layout: 'centered',
@@ -21,27 +21,56 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const DropdownWithoutIcons: Story = {
-  args: {
-    dropdownItems: [{ text: 'Learn' }, { text: 'Edit' }, { text: 'Delete' }],
+  render: () => {
+    return (
+      <Dropdown>
+        <DropdownItem>
+          <a href={'javascript:void;'}>Learn</a>
+        </DropdownItem>
+        <div className={s.separator} />
+        <DropdownItem>
+          <a href={'javascript:void;'}>Edit</a>
+        </DropdownItem>
+        <div className={s.separator} />
+        <DropdownItem>
+          <a href={'javascript:void;'}>Delete</a>
+        </DropdownItem>
+      </Dropdown>
+    )
   },
 }
 
 export const DropdownWithIcons: Story = {
-  args: {
-    dropdownItems: [
-      { icon: 'eye-outline', text: 'Learn' },
-      { icon: 'edit', text: 'Edit' },
-      { icon: 'delete', text: 'Delete' },
-    ],
+  render: () => {
+    return (
+      <Dropdown>
+        <DropdownItem>
+          <a href={'javascript:void;'}>
+            <Icon height={20} name={'eye-outline'} width={20} />
+            Learn
+          </a>
+        </DropdownItem>
+        <div className={s.separator} />
+        <DropdownItem>
+          <a href={'javascript:void;'}>
+            <Icon height={20} name={'edit'} width={20} />
+            Edit
+          </a>
+        </DropdownItem>
+        <div className={s.separator} />
+        <DropdownItem>
+          <a href={'javascript:void;'}>
+            <Icon height={20} name={'delete'} width={20} />
+            Delete
+          </a>
+        </DropdownItem>
+      </Dropdown>
+    )
   },
 }
 
 export const DropdownWithProfile: Story = {
   args: {
-    dropdownItems: [
-      { icon: 'edit', text: 'My Profile' },
-      { icon: 'delete', text: 'Sign Out' },
-    ],
     headerItem: <Profile email={'j&johnson@gmail.com'} imageSrc={ProfileImage} name={'Ivan'} />,
     rootTrigger: (
       <img
@@ -52,5 +81,24 @@ export const DropdownWithProfile: Story = {
         width={'36px'}
       />
     ),
+  },
+  render: args => {
+    return (
+      <Dropdown {...args}>
+        <DropdownItem>
+          <a href={'javascript:void;'}>
+            <Icon height={20} name={'edit'} width={20} />
+            Edit
+          </a>
+        </DropdownItem>
+        <div className={s.separator} />
+        <DropdownItem>
+          <a href={'javascript:void;'}>
+            <Icon height={20} name={'delete'} width={20} />
+            Delete
+          </a>
+        </DropdownItem>
+      </Dropdown>
+    )
   },
 }
