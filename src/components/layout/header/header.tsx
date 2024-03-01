@@ -10,7 +10,7 @@ import { Icon } from '@/components/ui/icon/icon'
 import { Logo } from '@/components/ui/logo'
 import { Typography } from '@/components/ui/typography'
 import { selectUser } from '@/services/app/app.selectors'
-import { useLogoutMutation } from '@/services/auth/signin-api'
+import { useLogoutMutation } from '@/services/auth/auth.service'
 import clsx from 'clsx'
 
 import s from './header.module.scss'
