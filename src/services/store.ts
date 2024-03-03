@@ -1,6 +1,5 @@
 import { appSlice } from '@/services/app/app.slice'
 import { authApi } from '@/services/auth/auth.service'
-import { authSlice } from '@/services/auth/auth.slice'
 import { baseApi } from '@/services/base-api/base-api'
 import { configureStore } from '@reduxjs/toolkit'
 
