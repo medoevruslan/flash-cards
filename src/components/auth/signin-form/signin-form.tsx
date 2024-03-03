@@ -77,7 +77,7 @@ export const SigninForm = ({ onSubmit }: Props) => {
             </a>
           </Typography>
           <Typography variant={'subtitle2'}>
-            <a className={s.signUp} href={'#'}>
+            <a className={s.signUp} href={'/signup'}>
               Sign Up
             </a>
           </Typography>
