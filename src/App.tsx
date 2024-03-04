@@ -4,9 +4,9 @@ import { Layout } from '@/components/layout/layout'
 import { Router } from '@/router'
 import { store } from '@/services/store'
 
-export function App() {
-  console.log('main page')
+import 'react-toastify/dist/ReactToastify.css'
 
+export function App() {
   return (
     <Provider store={store}>
       <Layout>

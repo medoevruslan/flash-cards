@@ -21,10 +21,11 @@ const SignupFormSchema = z
     path: ['confirmPassword'],
   })
 
-export type FormValues = z.infer<typeof SignupFormSchema>
+export type SignupFormValues = z.infer<typeof SignupFormSchema>
+export type RequestSignupFormValues = Omit<SignupFormValues, 'confirmPassword'>
 
 export type Props = {
-  onSubmit: (data: FormValues) => void
+  onSubmit: (data: RequestSignupFormValues) => void
 }
 
 export const SignupForm = ({ onSubmit }: Props) => {
@@ -33,7 +34,7 @@ export const SignupForm = ({ onSubmit }: Props) => {
     formState: { errors },
     handleSubmit,
     register,
-  } = useForm<FormValues>({
+  } = useForm<SignupFormValues>({
     defaultValues: {
       confirmPassword: '',
       email: '',
@@ -42,8 +43,12 @@ export const SignupForm = ({ onSubmit }: Props) => {
     resolver: zodResolver(SignupFormSchema),
   })
 
+  const handleOnSubmit = (data: SignupFormValues) => {
+    onSubmit({ email: data.email, password: data.password })
+  }
+
   return (
-    <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={s.form} onSubmit={handleSubmit(handleOnSubmit)}>
       <DevTool control={control} />
       <Card className={s.card}>
         <header className={s.header}>
@@ -53,24 +58,29 @@ export const SignupForm = ({ onSubmit }: Props) => {
           {...register('email')}
           className={s.email}
           error={errors.email?.message}
+          id={'email'}
           label={'Email'}
         />
         <Input
           {...register('password')}
+          autoComplete={'off'}
           className={s.password}
           error={errors.password?.message}
+          id={'password'}
           label={'Password'}
           type={'password'}
         />
         <Input
           {...register('confirmPassword')}
+          autoComplete={'off'}
           className={s.password}
           error={errors.confirmPassword?.message}
+          id={'confirm-password'}
           label={'Confirm Password'}
           type={'password'}
         />
         <Button className={s.signUp} fullwidth variant={'primary'}>
-          <Typography variant={'subtitle2'}>Sign In</Typography>
+          Sign Up
         </Button>
         <footer className={s.footer}>
           <Typography variant={'body2'}>

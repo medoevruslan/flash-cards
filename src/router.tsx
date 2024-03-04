@@ -4,6 +4,7 @@ import { Navigate, Outlet, RouterProvider, createBrowserRouter } from 'react-rou
 
 import { DeckList } from '@/pages/deck-list/deck-list'
 import { Signin } from '@/pages/signin'
+import { Signup } from '@/pages/signup'
 import { appActions } from '@/services/app/app.slice'
 import { useMeQuery } from '@/services/auth/auth.service'
 
@@ -51,6 +52,10 @@ const signInCheck = {
     {
       element: <Signin />,
       path: '/login',
+    },
+    {
+      element: <Signup />,
+      path: '/signup',
     },
   ],
   element: <RedirectToMainWhenUserSignedIn />,
