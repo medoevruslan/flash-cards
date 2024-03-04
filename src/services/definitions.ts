@@ -58,10 +58,12 @@ export type CustomerError = {
 }
 
 export type GetCardsArgs = {
+  answer?: string
   currentPage?: number
   id: string
   itemsPerPage?: number
   orderBy?: string
+  question?: string
 }
 
 export type Cards = {

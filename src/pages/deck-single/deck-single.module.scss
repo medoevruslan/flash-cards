@@ -1,0 +1,32 @@
+@use '../deck-list/deck-list.module' as decklist;
+
+.table {
+  margin-bottom: 24px;
+}
+
+.wrapper {
+  & > a {
+    display: block;
+    svg, p {
+      display: inline-block;
+      vertical-align: middle;
+      transition: color .2s linear ;
+    }
+    &:hover {
+      svg, p {
+        color: var(--color-accent-500);
+      }
+    }
+    margin-bottom: 34px;
+  }
+
+  .header {
+    margin-bottom: 15px;
+  }
+
+  .search {
+    width: 100%;
+    margin: 15px 0 25px;
+  }
+}
+

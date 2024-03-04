@@ -40,7 +40,7 @@ export const TableDeck = ({ className, decks }: Props) => {
           decks.map(deck => (
             <Table.Row key={deck.id + deck.userId}>
               <Table.Cell>
-                <Link to={`/decks/${deck.id}`}>
+                <Link to={`/decks/${deck.id}?deck-name=${encodeURIComponent(deck.author.name)}`}>
                   <div className={s.deckName}>
                     <img
                       alt={`cover image for ${deck.name}`}

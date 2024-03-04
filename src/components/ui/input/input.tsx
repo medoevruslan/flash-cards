@@ -62,6 +62,7 @@ export const Input = forwardRef<
 
     const inputType = type === 'password' && !showPassword ? 'password' : 'text'
     const showClearInputBtn = !!value && clearInput && type === 'search'
+    const shouldAutocomplete = type === 'search' && inputType === 'password' ? 'off' : 'on'
 
     return (
       <>
@@ -84,6 +85,7 @@ export const Input = forwardRef<
               />
             )}
             <input
+              autoComplete={shouldAutocomplete}
               className={finalInputClassName}
               id={'default-input'}
               onChange={handleOnChange}
