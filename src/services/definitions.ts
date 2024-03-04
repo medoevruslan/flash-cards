@@ -43,3 +43,15 @@ export type User = {
   name: string
   updated: string
 }
+
+export type ErrorDataType = {
+  errorMessages: {
+    field: string
+    message: string
+  }[]
+}
+
+export type CustomerError = {
+  data: ErrorDataType
+  status: number
+}

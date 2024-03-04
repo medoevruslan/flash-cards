@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
 import { SigninForm } from '@/components/auth'
-import { FormValues } from '@/components/auth/signin-form'
+import { SigninFormValues } from '@/components/auth/signin-form'
 import { useLoginMutation } from '@/services/auth/auth.service'
 
 import s from './signin.module.scss'
@@ -11,7 +11,7 @@ export const Signin = () => {
 
   const navigate = useNavigate()
 
-  const handleSignin = async (data: FormValues) => {
+  const handleSignin = async (data: SigninFormValues) => {
     try {
       await login(data).unwrap()
       navigate('/', { replace: true })

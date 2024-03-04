@@ -1,4 +1,5 @@
-import { FormValues } from '@/components/auth/signin-form'
+import { SigninFormValues } from '@/components/auth/signin-form'
+import { SignupFormValues } from '@/components/auth/signup-form'
 import { baseApi } from '@/services/base-api/base-api'
 import { User } from '@/services/definitions'
 
@@ -9,7 +10,7 @@ export const authApi = baseApi.injectEndpoints({
         {
           accessToken: string
         },
-        FormValues
+        SigninFormValues
       >({
         invalidatesTags: ['me'],
         query: body => ({
@@ -31,12 +32,12 @@ export const authApi = baseApi.injectEndpoints({
           url: '/v1/auth/me',
         }),
       }),
-      signup: build.mutation<User, FormValues>({
+      signup: build.mutation<User, Omit<SignupFormValues, 'confirmPassword'>>({
         invalidatesTags: ['me'],
         query: body => ({
           body,
           method: 'POST',
-          url: '/v1/auth/logout',
+          url: '/v1/auth/sign-up',
         }),
       }),
     }

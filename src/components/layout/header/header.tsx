@@ -2,6 +2,7 @@ import { ComponentProps } from 'react'
 import { useSelector } from 'react-redux'
 
 import LogoImage from '@/assets/Logo.png'
+import FallBackUserImage from '@/assets/person-outline.svg'
 import { Container } from '@/components/container/container'
 import { Profile } from '@/components/profile'
 import { Button } from '@/components/ui/button'
@@ -19,6 +20,8 @@ export const Header = ({ children, className, ...rest }: ComponentProps<'header'
   const user = useSelector(selectUser)
   const [logout] = useLogoutMutation()
 
+  const userImage = user?.avatar ?? FallBackUserImage
+
   return (
     <header className={clsx(s.header, className)} {...rest}>
       <Container>
@@ -31,14 +34,14 @@ export const Header = ({ children, className, ...rest }: ComponentProps<'header'
               </Typography>
               <Dropdown
                 headerItem={
-                  <Profile email={user.email || '@email'} imageSrc={user.avatar} name={user.name} />
+                  <Profile email={user.email || '@email'} imageSrc={userImage} name={user.name} />
                 }
                 rootTrigger={
                   <img
                     alt={'open dropdown'}
                     aria-label={'open dropdown'}
                     role={'button'}
-                    src={user.avatar}
+                    src={userImage}
                     width={'36px'}
                   />
                 }

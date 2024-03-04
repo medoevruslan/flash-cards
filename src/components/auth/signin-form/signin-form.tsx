@@ -17,10 +17,10 @@ const SigninFormSchema = z.object({
   rememberMe: z.boolean().default(false),
 })
 
-export type FormValues = z.infer<typeof SigninFormSchema>
+export type SigninFormValues = z.infer<typeof SigninFormSchema>
 
 export type Props = {
-  onSubmit: (data: FormValues) => void
+  onSubmit: (data: SigninFormValues) => void
 }
 
 export const SigninForm = ({ onSubmit }: Props) => {
@@ -29,7 +29,7 @@ export const SigninForm = ({ onSubmit }: Props) => {
     formState: { errors },
     handleSubmit,
     register,
-  } = useForm<FormValues>({
+  } = useForm<SigninFormValues>({
     defaultValues: {
       email: '',
       password: '',
