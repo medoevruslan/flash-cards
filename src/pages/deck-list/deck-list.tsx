@@ -73,7 +73,7 @@ export const DeckList = () => {
         <Pagination
           currentPage={page}
           onPageChange={setPage}
-          pageSize={Number(postsPerPage)}
+          postsPerPage={Number(postsPerPage)}
           totalCount={totalPages}
         >
           <PostsPerPage onChange={handleChangePostsPerPage} options={postsOnPage} />
@@ -83,7 +83,7 @@ export const DeckList = () => {
   )
 }
 
-const handleChangeWithPageReset = <T,>(
+export const handleChangeWithPageReset = <T,>(
   pageReset: (page: number) => void,
   callback: (...args: T[]) => void
 ) => {

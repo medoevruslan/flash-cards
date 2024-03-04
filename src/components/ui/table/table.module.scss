@@ -26,16 +26,13 @@
   }
 }
 
-.iconRating {
-  padding-right: 10px;
-}
-
 .iconSort {
   
 }
 
 .actionIcon {
   cursor: pointer;
+  display: inline-block;
   transition: color .2s ease-in;
   &:hover {
     color: var(--color-accent-500);

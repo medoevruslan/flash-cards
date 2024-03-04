@@ -11,7 +11,7 @@ import s from './pagination.module.scss'
 export type PaginationProps = {
   currentPage?: number
   onPageChange: (page: number) => void
-  pageSize: number
+  postsPerPage: number
   siblingCount?: number
   totalCount: number
 } & ComponentProps<'div'>
@@ -21,15 +21,20 @@ export const Pagination = ({
   className,
   currentPage = 1,
   onPageChange,
-  pageSize,
+  postsPerPage,
   siblingCount,
   totalCount,
 }: PaginationProps) => {
-  const paginationRange = usePagination({ currentPage, pageSize, siblingCount, totalCount })
+  const paginationRange = usePagination({
+    currentPage,
+    postsPerPage,
+    siblingCount,
+    totalCount,
+  })
 
   const isDots = (el: unknown) => el === '...'
   const isActive = (num: number | string) => !isDots(num) && num === currentPage
-  const lastPage = Math.ceil(totalCount / pageSize)
+  const lastPage = totalCount
 
   const handleForward = () => onPageChange(currentPage + 1)
 

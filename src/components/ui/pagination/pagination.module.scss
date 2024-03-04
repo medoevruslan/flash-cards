@@ -50,7 +50,9 @@ a, button {
       }
       &:disabled {
         pointer-events: none;
-        color: var(--color-dark-100);
+        svg {
+          color: var(--color-dark-100);
+        }
       }
     }
   }

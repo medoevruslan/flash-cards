@@ -2,7 +2,8 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Navigate, Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-import { DeckList } from '@/pages/deck-list/deck-list'
+import { DeckList } from '@/pages/deck-list/'
+import { DeckSingle } from '@/pages/deck-single/'
 import { Signin } from '@/pages/signin'
 import { Signup } from '@/pages/signup'
 import { appActions } from '@/services/app/app.slice'
@@ -44,6 +45,10 @@ const privateRoutes = [
   {
     element: <DeckList />,
     path: '/',
+  },
+  {
+    element: <DeckSingle />,
+    path: '/decks/:id',
   },
 ]
 

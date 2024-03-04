@@ -1,0 +1,26 @@
+@forward "@/components/ui/table/table.module.scss";
+
+.table {
+  width: 100%;
+
+  .cardName {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 300px;
+    max-width: 100%;
+
+    .cardCover {
+      width: 118px;
+      height: 48px;
+      max-width: 100%;
+      object-fit: cover;
+    }
+
+    .cardText {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
