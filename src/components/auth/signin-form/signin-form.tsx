@@ -49,21 +49,18 @@ export const SigninForm = ({ onSubmit }: Props) => {
           {...register('email')}
           className={s.email}
           error={errors.email?.message}
+          id={'email'}
           label={'Email'}
         />
         <Input
           {...register('password')}
           className={s.password}
           error={errors.password?.message}
+          id={'password'}
           label={'Password'}
           type={'password'}
         />
-        <CheckboxControlled
-          control={control}
-          defaultValue={false}
-          label={'Remember me'}
-          name={'rememberMe'}
-        />
+        <CheckboxControlled control={control} label={'Remember me'} name={'rememberMe'} />
         <Typography className={s.forgot} variant={'body2'}>
           <a href={'#'}>Forgot password?</a>
         </Typography>

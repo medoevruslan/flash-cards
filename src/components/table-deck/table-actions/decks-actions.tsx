@@ -2,7 +2,7 @@ import { Icon } from '@/components/ui/icon/icon'
 
 import s from '@/components/ui/table/table.module.scss'
 
-export const TableActions = () => {
+export const DecksActions = () => {
   return (
     <>
       <Icon

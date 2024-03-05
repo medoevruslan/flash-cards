@@ -25,7 +25,7 @@ export const Signup = () => {
           if (error.field && error.message) {
             toast.error(`error: ${error.message} in ${error.field}`)
           } else {
-            toast.error(error as unknown as string)
+            toast.error(JSON.stringify(error))
           }
         }
       } else {

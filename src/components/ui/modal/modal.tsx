@@ -74,20 +74,18 @@ export const Modal = ({ children, className, onClose, open = false, style, title
                 <section className={s.content} style={style}>
                   <header className={s.header}>
                     {title && (
-                      <DialogTitle>
+                      <DialogTitle asChild>
                         <Typography variant={'h3'}>{title}</Typography>
                       </DialogTitle>
                     )}
                     <DialogClose>
-                      <button>
-                        <Icon
-                          aria-label={'close'}
-                          className={s.close}
-                          height={12}
-                          name={'close'}
-                          width={12}
-                        />
-                      </button>
+                      <Icon
+                        aria-label={'close'}
+                        className={s.close}
+                        height={12}
+                        name={'close'}
+                        width={12}
+                      />
                     </DialogClose>
                   </header>
                   <article>{children}</article>

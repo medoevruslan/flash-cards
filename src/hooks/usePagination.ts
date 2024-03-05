@@ -2,17 +2,20 @@ import { useMemo } from 'react'
 
 export type Props = {
   currentPage: number
-  pageSize: number
+  postsPerPage: number
   siblingCount?: number
   totalCount: number
 }
 
 const DOTS = '...'
 
-export const usePagination = ({ currentPage, pageSize, siblingCount = 1, totalCount }: Props) => {
+export const usePagination = ({
+  currentPage,
+  postsPerPage,
+  siblingCount = 1,
+  totalCount,
+}: Props) => {
   const paginationRange = useMemo(() => {
-    const totalPageCount = Math.ceil(totalCount / pageSize)
-
     const totalPageNumbers = 7
 
     /*
@@ -20,18 +23,18 @@ export const usePagination = ({ currentPage, pageSize, siblingCount = 1, totalCo
      If the number of pages is less than the page numbers we want to show in our
      paginationComponent, we return the range [1..totalPageCount]
    */
-    if (totalPageNumbers >= totalPageCount) {
-      return range(1, totalPageCount)
+    if (totalPageNumbers >= totalCount) {
+      return range(1, totalCount)
     }
 
     const firstPageIndex = 1
-    const lastPageIndex = totalPageCount
+    const lastPageIndex = totalCount
 
     const leftSiblingIndex = Math.max(currentPage - siblingCount, 1)
     const rightSiblingIndex = Math.min(currentPage + siblingCount, lastPageIndex)
 
     const shouldShowLeftDots = leftSiblingIndex > 2
-    const shouldShowRightDots = rightSiblingIndex < totalPageCount - 2
+    const shouldShowRightDots = rightSiblingIndex < totalCount - 2
 
     /*
   Case 2: No left dots to show, but rights dots to be shown
@@ -48,7 +51,7 @@ export const usePagination = ({ currentPage, pageSize, siblingCount = 1, totalCo
    */
     if (shouldShowLeftDots && !shouldShowRightDots) {
       const rightItemCount = 3 + 2 * siblingCount
-      const rightRange = range(totalPageCount - rightItemCount + 1, totalPageCount)
+      const rightRange = range(totalCount - rightItemCount + 1, totalCount)
 
       return [firstPageIndex, DOTS, ...rightRange]
     }
@@ -61,7 +64,7 @@ export const usePagination = ({ currentPage, pageSize, siblingCount = 1, totalCo
 
       return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex]
     }
-  }, [currentPage, pageSize, siblingCount, totalCount])
+  }, [currentPage, postsPerPage, siblingCount, totalCount])
 
   return paginationRange || []
 }
