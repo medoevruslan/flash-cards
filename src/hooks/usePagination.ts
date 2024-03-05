@@ -2,19 +2,13 @@ import { useMemo } from 'react'
 
 export type Props = {
   currentPage: number
-  postsPerPage: number
   siblingCount?: number
   totalCount: number
 }
 
 const DOTS = '...'
 
-export const usePagination = ({
-  currentPage,
-  postsPerPage,
-  siblingCount = 1,
-  totalCount,
-}: Props) => {
+export const usePagination = ({ currentPage, siblingCount = 1, totalCount }: Props) => {
   const paginationRange = useMemo(() => {
     const totalPageNumbers = 7
 
@@ -64,7 +58,7 @@ export const usePagination = ({
 
       return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex]
     }
-  }, [currentPage, postsPerPage, siblingCount, totalCount])
+  }, [currentPage, siblingCount, totalCount])
 
   return paginationRange || []
 }

@@ -11,7 +11,6 @@ import s from './pagination.module.scss'
 export type PaginationProps = {
   currentPage?: number
   onPageChange: (page: number) => void
-  postsPerPage: number
   siblingCount?: number
   totalCount: number
 } & ComponentProps<'div'>
@@ -21,13 +20,11 @@ export const Pagination = ({
   className,
   currentPage = 1,
   onPageChange,
-  postsPerPage,
   siblingCount,
   totalCount,
 }: PaginationProps) => {
   const paginationRange = usePagination({
     currentPage,
-    postsPerPage,
     siblingCount,
     totalCount,
   })

@@ -144,12 +144,7 @@ export const DeckList = () => {
           selectedTab={selectedTab}
         />
         <TableDeck className={s.table} decks={decks} />
-        <Pagination
-          currentPage={page}
-          onPageChange={setPage}
-          postsPerPage={Number(postsPerPage)}
-          totalCount={totalPages}
-        >
+        <Pagination currentPage={page} onPageChange={setPage} totalCount={totalPages}>
           <PostsPerPage onChange={handleChangePostsPerPage} options={postsOnPage} />
         </Pagination>
       </section>
