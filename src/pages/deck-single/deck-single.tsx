@@ -68,12 +68,7 @@ export const DeckSingle = () => {
         {cards.length ? (
           <>
             <TableDeckCards cards={cards} className={s.table} />
-            <Pagination
-              currentPage={page}
-              onPageChange={setPage}
-              postsPerPage={Number(postsPerPage)}
-              totalCount={totalPages}
-            >
+            <Pagination currentPage={page} onPageChange={setPage} totalCount={totalPages}>
               <PostsPerPage onChange={handleChangePostsPerPage} options={postsOnPage} />
             </Pagination>
           </>
