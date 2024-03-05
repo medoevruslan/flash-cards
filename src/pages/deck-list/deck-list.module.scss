@@ -30,4 +30,29 @@
   }
 }
 
+.addNewDeckForm {
+  width: 540px;
+
+  .inputNewDeckName {
+    width: 100%;
+  }
+
+  .uploadImageBtn {
+    margin: 24px 0;
+  }
+
+  .checkbox {
+    margin-bottom: 30px;
+  }
+
+  .modalButtons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+}
+
+
+
 

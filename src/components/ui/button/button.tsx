@@ -30,7 +30,9 @@ export const Button = <T extends ElementType = 'button'>(
       className={clsx(s.button, s[variant], fullwidth && s.fullWidth, className)}
       {...rest}
     >
-      <Typography variant={'subtitle2'}>{children}</Typography>
+      <Typography className={s.buttonChild} variant={'subtitle2'}>
+        {children}
+      </Typography>
     </Component>
   )
 }

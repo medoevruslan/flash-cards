@@ -6,8 +6,8 @@ import spriteHref from '../../../assets/icons/sprite.svg'
 
 type Props = {
   name: string
-}
-export const Icon = ({ name, ...props }: Props & SVGProps<SVGSVGElement>) => {
+} & SVGProps<SVGSVGElement>
+export const Icon = ({ name, ...props }: Props) => {
   return (
     <svg className={s.iconFlex} {...props}>
       <use href={`${spriteHref}#${name}`} />
